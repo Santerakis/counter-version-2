@@ -1,3 +1,8 @@
+.red {
+  color: red;
+  font-width: 50;
+  font-size: 20px;
+}
 .App {
   text-align: center;
 }

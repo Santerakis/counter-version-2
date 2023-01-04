@@ -51,10 +51,10 @@ function App() {
             </div>
 
             <div>
-                <div>{num}</div>
+                <div className={num === up ? 'red' : ''}>{num}</div>
                 <div>
-                    <Button name={'inc'} callback={inc}/>
-                    <Button name={'res'} callback={res}/>
+                    <Button name={'inc'} callback={inc} isDisable={num === up}/>
+                    <Button name={'res'} callback={res} isDisable={num === down}/>
                 </div>
             </div>
 
