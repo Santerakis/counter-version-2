@@ -36,13 +36,19 @@ function App() {
     }
     const onChangeUp = (value: number) => {
         setUp(value)
-        localStorage.setItem('up_limit', JSON.stringify(value))
+        // localStorage.setItem('up_limit', JSON.stringify(value))
     }
     const onChangeDown = (value: number) => {
         setDown(value)
-        setNum(value)
+        // setNum(value)
+        // localStorage.setItem('down_limit', JSON.stringify(value))
+        // localStorage.setItem('count', JSON.stringify(value))
+    }
+    const set = () => {
+        localStorage.setItem('up_limit', JSON.stringify(value))
         localStorage.setItem('down_limit', JSON.stringify(value))
         localStorage.setItem('count', JSON.stringify(value))
+        setNum(value)
     }
 
     return (
@@ -50,7 +56,7 @@ function App() {
             <div>
                 <Field callback={onChangeUp} value={up}/>
                 <Field callback={onChangeDown} value={down}/>
-                <Button name={'set'} callback={() => {}} isDisable={false}/>
+                <Button name={'set'} callback={set} isDisable={false}/>
 
             </div>
 
