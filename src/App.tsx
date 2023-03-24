@@ -4,23 +4,23 @@ import {Field} from "./Components/Field";
 import {Button} from "./Components/Button";
 
 function App() {
-    const [num, setNum] = useState(1)
-    const [up, setUp] = useState(5)
-    const [down, setDown] = useState(0)
+    const [num, setNum] = useState<number>(() => Number(localStorage.getItem('count')) || 1)
+    const [up, setUp] = useState<number>(() => Number(localStorage.getItem('up_limit')) || 5)
+    const [down, setDown] = useState<number>(() => Number(localStorage.getItem('down_limit')) || 1)
 
-    useEffect(() => {
-        const storedCount = localStorage.getItem('count')
-        storedCount && setNum(JSON.parse(storedCount))         //+ ; parsInt
-    },[])
+    // useEffect(() => {
+    //     const storedCount = localStorage.getItem('count')
+    //     storedCount && setNum(JSON.parse(storedCount))         //+ ; parsInt
+    // },[])
 
-    useEffect(() => {
-        const storedLimit = localStorage.getItem('up_limit')
-        storedLimit && setUp(JSON.parse(storedLimit))
-    }, [])
-    useEffect(() => {
-        const storedLimit = localStorage.getItem('down_limit')
-        storedLimit && setDown(JSON.parse(storedLimit))
-    },[])
+    // useEffect(() => {
+    //     const storedLimit = localStorage.getItem('up_limit')
+    //     storedLimit && setUp(JSON.parse(storedLimit))
+    // }, [])
+    // useEffect(() => {
+    //     const storedLimit = localStorage.getItem('down_limit')
+    //     storedLimit && setDown(JSON.parse(storedLimit))
+    // },[])
 
 
     const inc = () => {
@@ -40,14 +40,18 @@ function App() {
     }
     const onChangeDown = (value: number) => {
         setDown(value)
+        setNum(value)
         localStorage.setItem('down_limit', JSON.stringify(value))
+        localStorage.setItem('count', JSON.stringify(value))
     }
 
     return (
         <div className="App flex">
             <div>
-                <Field callback={onChangeUp}/>
-                <Field callback={onChangeDown}/>
+                <Field callback={onChangeUp} value={up}/>
+                <Field callback={onChangeDown} value={down}/>
+                <Button name={'set'} callback={() => {}} isDisable={false}/>
+
             </div>
 
             <div>

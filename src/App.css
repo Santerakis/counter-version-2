@@ -3,6 +3,9 @@
   font-width: 50;
   font-size: 20px;
 }
+.redInput{
+  color: red;
+}
 .App {
   text-align: center;
 }
