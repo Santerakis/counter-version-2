@@ -3,6 +3,7 @@ import React, {ChangeEvent, useState} from 'react';
 type FieldType = {
     callback: (value: number) => void
     value: number
+    err: boolean
 }
 
 export const Field = (props: FieldType) => {
@@ -19,7 +20,7 @@ export const Field = (props: FieldType) => {
                 type={'number'}
                 value={title}
                 onChange={onChangeHandler}
-
+                className={props.err ? 'redInput' : ''}
             />
         </div>
     )
